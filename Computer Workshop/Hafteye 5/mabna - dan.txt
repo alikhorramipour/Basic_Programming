@@ -1,0 +1,258 @@
+#include <stdio.h>
+#define pi 3.14
+float makose(float);
+int zarb(int a, int b);
+float jazr(int a, int b);
+int divide(int a, int b);
+int sum(int a, int b);
+void errorOccurred(char x);
+int tafrigh(int a, int b);
+int mod(int a, int b);
+int factoriel(int a);
+int power(int a, int b);
+int tarkib(int a, int b);
+float tan(float a);
+float sin(float a);
+float cos(float a);
+float log(float a);
+void print(char x, int a, int b, int c, float d, float e);
+
+int main()
+{
+	char x;
+	int a, b, c, y;
+	float d, e;
+	while (1) {
+		x = getchar();
+		switch (x)
+		{
+		case ('m'):
+			scanf_s("%d%d", &a, &b);
+			c = zarb(a, b);
+			print(x, a, b, c, d, e);
+			break;
+		case ('d'):
+			scanf_s("%d%d", &a, &b);
+			c = divide(a, b);
+			print(x, a, b, c, d, e);
+			break;
+		case ('a'):
+			scanf_s("%d%d", &a, &b);
+			c = sum(a, b);
+			print(x, a, b, c, d, e);
+			break;
+		case ('s'):
+			scanf_s("%d%d", &a, &b);
+			c = tafrigh(a, b);
+			print(x, a, b, c, d, e);
+			break;
+		case ('M'):
+			scanf_s("%d%d", &a, &b);
+			c = mod(a, b);
+			print(x, a, b, c, d, e);
+			break;
+		case ('f'):
+			scanf_s("%d", &a);
+			c = factoriel(a);
+			print(x, a, b, c, d, e);
+			break;
+		case ('p'):
+			scanf_s("%d%d", &a, &b);
+			c = power(a, b);
+			print(x, a, b, c, d, e);
+			break;
+		case ('r'):
+			scanf_s("%f", &e);
+			d = makose(e);
+			print(x, a, b, c, d, e);
+			break;
+		case ('S'):
+			scanf_s("%f", &d);
+			e = sin(d);
+			print(x, a, b, c, d, e);
+			break;
+		case ('C'):
+			scanf_s("%f", &d);
+			e = cos(d);
+			print(x, a, b, c, d, e);
+			break;
+		case ('t'):
+			scanf_s("%f", &d);
+			e = tan(d);
+			print(x, a, b, c, d, e);
+			break;
+		case ('L'):
+			scanf_s("%f", &d);
+			e = log(d);
+			print(x, a, b, c, d, e);
+			break;
+		case ('*'):
+			return 0;
+		case ('c'):
+			scanf_s("%d%d", &a, &b);
+			c = tarkib(a, b);
+			print(x, a, b, c, d, e);
+			break;
+		default:
+			x = 'o';
+			errorOccurred(x);
+			break;
+		}
+	}
+	return 0;
+}
+int zarb(int a, int b)
+{
+	int c;
+	c = a*b;
+	return c;
+}
+int divide(int a, int b)
+{
+	int c;
+	c = a / b;
+	return c;
+}
+int sum(int a, int b)
+{
+	int c;
+	c = a + b;
+	return c;
+}
+int tafrigh(int a, int b)
+{
+	int c;
+	c = a - b;
+	return c;
+}
+int mod(int a, int b)
+{
+	int c, d;
+	d = a / b;
+	c = a - (b*d);
+	return c;
+}
+int factoriel(int a)
+{
+	int i, c = 1;
+	for (i = 1; i <= a; i++)
+	{
+		c *= i;
+	}
+	return c;
+}
+int power(int a, int b)
+{
+	int c = 1;
+	int i;
+	for (i = 1; i <= b; i++)
+	{
+		c *= a;
+	}
+	return c;
+}
+float makose(float e)
+{
+	float c = 0;
+	c = (float)(1 / e);
+	return c;
+}
+int tarkib(int a, int b)
+{
+	int c, d;
+	d = (a - b);
+	c = (factoriel(a)) / (factoriel(d)*factoriel(b));
+	return c;
+}
+float jazr(int a, int b)
+{
+	float c;
+	return 0;
+}
+float sin(float a)
+{
+	float c = 0;
+	float e;
+	e = (pi*a) / 180;
+	int i;
+	for (i = 1; i <= 11; i += 2)
+	{
+		if (i % 2 == 0)
+			c += -1 * ((power(e, i)) / factoriel(i));
+		else
+			c += ((power(e, i)) / factoriel(i));
+		printf("%f\n", c);
+	}
+	return c;
+}
+float cos(float a)
+{
+	float c = 0;
+	c = a - ((power(a, 2)) / factoriel(2)) + ((power(a, 4)) / factoriel(4)) - ((power(a, 6)) / factoriel(6)) + ((power(a, 8)) / factoriel(8)) - ((power(a, 10)) / factoriel(10));
+	return c;
+}
+float tan(float a)
+{
+	float c = 0;
+	c = ((sin(a)) / (cos(a)));
+	return c;
+}
+float log(float a)
+{
+	float c = 0;
+	float b = 1.0;
+	int i;
+	a = a - 1;
+	if (a>1)
+		a = makose(a);
+	for (i = 1; i <= 6; i++)
+		c = b*((power(a, i) / factoriel(i)));
+	b *= -1.0;
+	if (a>1)
+		return -1 * c;
+	else
+		return c;
+}
+void print(char x, int a, int b, int c, float d, float e)
+{
+	switch (x)
+	{
+	case ('m'):
+		printf("%d * %d = %d\n", a, b, c);
+		break;
+	case ('d'):
+		printf("%d / %d = %d\n", a, b, c);
+		break;
+	case ('M'):
+		printf("%d mod %d=%d\n", a, b, c);
+		break;
+	case ('s'):
+		printf("%d - %d = %d\n", a, b, c);
+		break;
+	case ('a'):
+		printf("%d + %d = %d\n", a, b, c);
+		break;
+	case ('r'):
+		printf("makose = %f\n", e);
+		break;
+	case ('t'):
+		printf("tan%f = %f\n", d, e);
+		break;
+	case ('S'):
+		printf("sin%f = %f\n", d, e);
+		break;
+	case ('C'):
+		printf("cos%f = %f \n", d, e);
+		break;
+	case ('L'):
+		printf("ln %f=%f\n", d, e);
+		break;
+	case ('c'):
+		printf("tarkib=%d\n", c);
+		break;
+	}
+}
+void errorOccurred(char x)
+{
+	if (x == 'o') printf("ERROR:: out of range input!!");
+}

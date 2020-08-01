@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+	int compare(char first[], char second[])
+	{        
+		int l1 = 0, l2 = 0 , l;
+		while (first[l1] != 0)
+		 l1++; 
+		while (first[l2] != 0)
+			l2++;
+		if (l1 >= l2)
+			l = l2;
+		else
+			l = l1;
+		for (int i = 0; i < l; i++) {
+			if (first[i] > second[i]) { return 1; }
+			if (first[i] < second[i]) { return 0; }
+		}
+
+		if (l1 >= l2) { return 1; }
+		return 0;
+	}
+	int length(char s[100]) {
+		int l = 0;
+		while (s[l] != 0) {
+			l++;
+		}
+		return l;
+	}
+	int checkFinish(char t[])
+	{
+		char f[] = "Finish";
+		
+		for (int i = 0; i < length(f); i++) {
+			if (t[i] != f[i]) {
+				return 0;
+			}
+		}
+		return 1;
+	}
+		void bubbleSort(char a[100][100],int n)
+		{
+			for (int i = n - 1; i >= 0; i--) {
+				for (int j = 0; j < i; j++) {
+					if (compare(a[j], a[j + 1])) {
+						for (int k = 0; k < 100; k++) {
+							char tmp = a[j][k];
+							a[j][k] = a[j + 1][k];
+							a[j + 1][k] = tmp;
+						}
+					}
+				}
+			}
+		
+		} 
+		int main()
+		{
+			int n;
+			printf("tedade kalamat ra vared konid\n");
+			scanf("%d", &n);
+			char a[100][100];
+			for (int i = 0; i < n; i++) {
+				scanf("%s", &(a[i]));
+				if (checkFinish(a[i]))
+				{ n = i; break; }
+			}
+
+			bubbleSort(a, n);
+			for (int i = 0; i < n; i++) {
+				printf("%s\n", (a[i]));
+			}
+			system("pause");
+			return 0;
+		}

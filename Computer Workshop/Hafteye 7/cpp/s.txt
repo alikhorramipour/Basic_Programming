@@ -1,0 +1,63 @@
+#include <stdio.h>
+float BMI(float mass, float height);
+int checkFinish(char x[][],int i);
+int main()
+{
+    char x[100][100];
+    float m[100];
+    float h[100];
+    float b[100];
+    int i=0,j=10,k=0;
+    while(1)
+    {
+        scanf("%s",x[i]);
+        j=checkFinish(x,i);
+        if (j==0) break;
+        scanf("%d",&m[i]);
+        scanf("%f",&h[i]);
+        b[i]=BMI(m[i],h[i]);
+        puts(x[i]);
+        i++;
+    }
+
+}
+float BMI(float mass, float height)
+{
+    float l;
+    l=mass/(height*height);
+    return l;
+}
+int checkFinish(char x[][],int i)
+{
+    if (x[i][0]!='F')
+    {
+        printf("1");
+        if (x[i][1]!='i')
+        {
+            printf("1");
+            if (x[i][2]!='N')
+            {
+                printf("1");
+                if (x[i][3]!='i')
+                {
+                    printf("1");
+                    if (x[i][4]!='S')
+                    {
+                        printf("1");
+                        if (x[i][5]!='h')
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else  return 1;
+}
+/*void bubbleSort(char names[][], float BMI[])
+{
+
+
+}
+*/

@@ -1,0 +1,17 @@
+include <stdio.h>
+include <conio.h>
+int main()
+{
+int a,b,c;
+scanf("%d%d%d",&a,&b,&c);
+int max,min;
+max=a;
+(b>a) ? (max=b):(max=a);
+(c>a) ? (max=c):(max=a);
+min=a;
+(b<a) ? (min=b):(min=a);
+(c<a) ? (min=c):(min=a);
+getch();
+
+return 0;
+}
